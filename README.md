@@ -1,5 +1,5 @@
 # curve-calculator
-Just come code for the community
+Making the world a better place one line at a time.
 
 
 # Style Guide
