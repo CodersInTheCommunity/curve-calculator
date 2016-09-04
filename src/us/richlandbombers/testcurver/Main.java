@@ -62,6 +62,7 @@ public class Main
 	mPts = input.getMaxPoints();
 	Main.splitpn.add(new Table(sIDs, sPts, mPts), JSplitPane.LEFT);
 	Main.window.pack();
+	Main.window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	Main.window.setVisible(true);
     }
 
