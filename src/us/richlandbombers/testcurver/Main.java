@@ -12,9 +12,7 @@ import us.richlandbombers.testcurver.data.Table;
 
 //JVassister was statically linked so you didn't need to throw it into a build script to get this to compile.
 /**
- * Handles the GUI frontend of stuff. BUGS: - Inputting only 1 student causes
- * Table to freak out and we end up with an exception.
- * 
+ * Handles the GUI and operation of things.
  * @author Brian Schnepp
  *
  */
