@@ -1,6 +1,5 @@
 package us.richlandbombers.testcurver;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -42,10 +41,10 @@ public class SliderLine extends JPanel
     public SliderLine(String title, int min, int max, int def)
     {
 	super();
-	this.setLayout(new BorderLayout());
+	//this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 	slider = new JSlider(min, max, def);
 	name = new JLabel(title);
-	val = new JTextField(def + "");
+	val = new JTextField(def + "", 5);
 
 	slider.addChangeListener(new ChangeListener()
 	{
@@ -65,8 +64,8 @@ public class SliderLine extends JPanel
 	    }
 	});
 
-	this.add(name, BorderLayout.WEST);
-	this.add(slider, BorderLayout.CENTER);
-	this.add(val, BorderLayout.EAST);
+	this.add(name);
+	this.add(slider);
+	this.add(val);
     }
 }

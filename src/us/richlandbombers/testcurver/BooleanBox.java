@@ -1,6 +1,5 @@
 package us.richlandbombers.testcurver;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -36,16 +35,16 @@ public class BooleanBox extends JPanel
 
     public BooleanBox(String title, int min, int max)
     {
-	this(title, min, max, 80);
+	this(title, min, max, false);
     }
 
-    public BooleanBox(String title, int min, int max, int def)
+    public BooleanBox(String title, int min, int max, boolean def)
     {
 	super();
-	this.setLayout(new BorderLayout());
+	//this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 	box = new JCheckBox();
 	name = new JLabel(title);
-	val = new JTextField(def + "");
+	val = new JTextField(def + "", 5);
 
 	box.addChangeListener(new ChangeListener()
 	{
@@ -65,8 +64,8 @@ public class BooleanBox extends JPanel
 	    }
 	});
 
-	this.add(name, BorderLayout.WEST);
-	this.add(box, BorderLayout.CENTER);
-	this.add(val, BorderLayout.EAST);
+	this.add(name);
+	this.add(box);
+	this.add(val);
     }
 }
