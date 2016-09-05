@@ -10,11 +10,11 @@ public class Curver
    public static void main(String[] args)
    {
     Scanner sc = new Scanner(System.in);
-    System.out.println("Enter all of the test scores in points separated by a space.");
+    System.out.println("Enter all of the test scores, in points, separated by a space.");
     String scores = sc.nextLine();
-    System.out.println("How many total points is the test worth?");
+    System.out.println("How many points is the test worth?");
     double totalPoints = sc.nextDouble();
-    System.out.println("What would you like the average test score to be in percentage?");
+    System.out.println("What would you like the average test score to be in percent?");
     double avg = sc.nextDouble();
     double sum = 0;
     int stop = 0;
