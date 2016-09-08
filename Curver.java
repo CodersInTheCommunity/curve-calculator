@@ -84,7 +84,7 @@ public class Curver
    else if (curve == 0)
    {
    System.out.println(" ");
-    System.out.println("This test doesn not need to be curved.");
+    System.out.println("This test does not need to be curved.");
     System.out.println("Test Diagnostics:");
     System.out.println("Number of students who took this test: " + totalScores);
     System.out.printf("Average test score in points: %.2f", testAveragePoints);
