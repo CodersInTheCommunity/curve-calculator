@@ -14,7 +14,12 @@ public class LabeledTextField extends JPanel
 
     public LabeledTextField(String name)
     {
-	this.field = new JTextField(6);
+	this(name, 6);
+    }
+    
+    public LabeledTextField(String name, int sz)
+    {
+	this.field = new JTextField(sz);
 	this.label = new JLabel(name);
 	this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 	this.add(label);

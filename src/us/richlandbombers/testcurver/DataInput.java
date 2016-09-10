@@ -17,13 +17,15 @@ import com.gmail.bschneppdev.jvassister.guibasic.DisplayMessage;
 @SuppressWarnings("serial")
 public class DataInput extends JFrame
 {
-    private ArrayList<Long> stIDs = new ArrayList<Long>();
+    private ArrayList<String> stIDs = new ArrayList<String>();
     private ArrayList<Integer> scPts = new ArrayList<Integer>();
     private ArrayList<Integer> mxPts = new ArrayList<Integer>();
 
-    private LabeledTextField sID = new LabeledTextField("Student ID");
+    private LabeledTextField sID = new LabeledTextField("Name or Student ID");
     private LabeledTextField sPt = new LabeledTextField("Scored Points");
     private LabeledTextField mPt = new LabeledTextField("Maximum Points");
+
+    private JPanel pnl;
 
     private boolean okToContinue = false;
 
@@ -31,7 +33,7 @@ public class DataInput extends JFrame
     {
 	super("Enter input data");
 	this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-	JPanel pnl = new JPanel();
+	pnl = new JPanel();
 	pnl.setLayout(new BoxLayout(pnl, BoxLayout.X_AXIS));
 	pnl.add(sID);
 	pnl.add(sPt);
@@ -44,6 +46,7 @@ public class DataInput extends JFrame
 	buttons.setLayout(new BoxLayout(buttons, BoxLayout.X_AXIS));
 	JButton next = new JButton("Next Student");
 	JButton done = new JButton("Finished");
+	JButton easyMode = new JButton("Easy Mode");
 
 	next.addActionListener(new ActionListener()
 	{
@@ -56,12 +59,51 @@ public class DataInput extends JFrame
 		});
 		if (ok == JOptionPane.YES_OPTION)
 		{
-		    stIDs.add(Long.parseLong(sID.getField().getText()));
-		    scPts.add(Integer.parseInt(sPt.getField().getText()));
-		    mxPts.add(Integer.parseInt(mPt.getField().getText()));
-		    mPt.getField().setText("");
-		    sPt.getField().setText("");
-		    sID.getField().setText("");
+		    if (!sID.getField().getText().equalsIgnoreCase("") || !sPt.getField().getText().equalsIgnoreCase("")
+	                    || !mPt.getField().getText().equalsIgnoreCase(""))
+		    {
+			stIDs.add(sID.getField().getText());
+			scPts.add(Integer.parseInt(sPt.getField().getText()));
+			mxPts.add(Integer.parseInt(mPt.getField().getText()));
+			mPt.getField().setText("");
+			sPt.getField().setText("");
+			sID.getField().setText("");
+		    }
+		}
+	    }
+	});
+
+	easyMode.addActionListener(new ActionListener()
+	{
+	    @Override
+	    public void actionPerformed(ActionEvent e)
+	    {
+		int ok = DisplayMessage.displayMessage(new String[]
+		{
+	                "Are you sure? Any previously inputted information will be lost."
+		});
+		if (ok == JOptionPane.YES_OPTION)
+		{
+		    DataInput.this.setVisible(false);
+		    DataInput.this.remove(pnl);
+		    JPanel newPanel = new JPanel();
+		    newPanel.add(Box.createHorizontalGlue());
+		    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.X_AXIS));
+
+		    JButton confirm = new JButton("Confirm");
+		    confirm.addActionListener(new ActionListener()
+	            {
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+			    // TODO Auto-generated method stub
+			}
+
+	            });
+		    newPanel.add(confirm);
+		    newPanel.add(Box.createHorizontalGlue());
+		    DataInput.this.add(newPanel);
+		    DataInput.this.setVisible(true);
 		}
 	    }
 	});
@@ -77,11 +119,15 @@ public class DataInput extends JFrame
 		});
 		if (ok == JOptionPane.YES_OPTION)
 		{
-		    stIDs.add(Long.parseLong(sID.getField().getText()));
-		    scPts.add(Integer.parseInt(sPt.getField().getText()));
-		    mxPts.add(Integer.parseInt(mPt.getField().getText()));
-		    DataInput.this.dispose();
-		    okToContinue = true;
+		    if (!sID.getField().getText().equalsIgnoreCase("") || !sPt.getField().getText().equalsIgnoreCase("")
+	                    || !mPt.getField().getText().equalsIgnoreCase(""))
+		    {
+			stIDs.add(sID.getField().getText().trim());
+			scPts.add(Integer.parseInt(sPt.getField().getText().trim()));
+			mxPts.add(Integer.parseInt(mPt.getField().getText().trim()));
+			DataInput.this.dispose();
+			okToContinue = true;
+		    }
 		}
 	    }
 	});
@@ -97,9 +143,9 @@ public class DataInput extends JFrame
 	this.setVisible(true);
     }
 
-    public long[] getStudentIDs()
+    public String[] getStudentIDs()
     {
-	long[] ids = new long[stIDs.size()];
+	String[] ids = new String[stIDs.size()];
 	for (int i = 0; i < ids.length; i++)
 	{
 	    ids[i] = stIDs.get(i);

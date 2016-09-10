@@ -68,4 +68,9 @@ public class SliderLine extends JPanel
 	this.add(slider);
 	this.add(val);
     }
+    
+    public double getWht()
+    {
+	return slider.getValue();
+    }
 }

@@ -68,4 +68,9 @@ public class BooleanBox extends JPanel
 	this.add(box);
 	this.add(val);
     }
+    
+    public boolean getSub()
+    {
+	return box.isSelected();
+    }
 }
