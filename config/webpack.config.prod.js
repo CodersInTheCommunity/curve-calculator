@@ -4,7 +4,7 @@ var path = require('path');
 module.exports = {
 	entry: './src/app.js',
 	output: {
-		path: path.resolve(__dirname, '../'),
+		path: path.resolve(__dirname, '../dist/'),
 		filename: 'bundle.min.js'
 	},
 	module: {

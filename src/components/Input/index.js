@@ -17,9 +17,16 @@ export default class Input extends React.Component {
 		});
 	}
 	handleKeyPress(e) {
-		let score = this.state.value;
-		if (e.key === 'Enter' && score != '') {
-			this.props.addScore(score);
+		if (e.key === 'Enter' && this.state.value != '') {
+			this.props.addScore(this.state.value);
+			this.setState({
+				value: ''
+			});
+		}
+	}
+	handleClick(e) {
+		if (this.state.value != '') {
+			this.props.addScore(this.state.value);
 			this.setState({
 				value: ''
 			});
@@ -35,6 +42,7 @@ export default class Input extends React.Component {
 					onChange={this.handleChange.bind(this)}
 					onKeyPress={this.handleKeyPress.bind(this)}
 					style={this.css} />
+				<button onClick={this.handleClick.bind(this)}>+</button>
 			</div>
 		);
 	}
