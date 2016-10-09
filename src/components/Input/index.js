@@ -6,6 +6,9 @@ export default class Input extends React.Component {
 		this.state = {
 			value: ''
 		}
+		this.css = {
+			width: '30px'
+		}
 	}
 	handleChange(e) {
 		let nonNumericRegex = /[^0-9.]+/g;
@@ -30,7 +33,8 @@ export default class Input extends React.Component {
 					type="text"
 					value={this.state.value}
 					onChange={this.handleChange.bind(this)}
-					onKeyPress={this.handleKeyPress.bind(this)} />
+					onKeyPress={this.handleKeyPress.bind(this)}
+					style={this.css} />
 			</div>
 		);
 	}

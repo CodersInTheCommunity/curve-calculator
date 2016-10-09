@@ -55,7 +55,6 @@ export default class App extends React.Component {
 				<Scores
 					scores={this.state.scores}
 					removeScore={this.removeScore.bind(this)} />
-				<br/>
 				<Curve
 					possiblePoints={this.state.possiblePoints}
 					targetPercentage={this.state.targetPercentage}
